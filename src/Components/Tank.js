@@ -18,14 +18,32 @@ export const Tank = ({
         style={{
           background: `linear-gradient(to bottom, transparent 0%,transparent ${
             100 - (quantity / 10 + quantityInMagicTank / 10)
-          }%, green ${
+          }%, #9EE3B4 ${
             100 - (quantity / 10 + quantityInMagicTank / 10)
-          }%,green ${100 - quantity / 10}%,#84cdee ${
+          }%,#9EE3B4 ${100 - quantity / 10}%,#84cdee ${
             100 - quantity / 10
           }%,#84cdee 100%)`,
         }}
       ></div>
       <button
+        onClick={() => {
+          setQuantityInMagicTanks((prev) => {
+            const newQuantityInTanks = [...prev];
+            newQuantityInTanks[index] = 0;
+            return newQuantityInTanks;
+          });
+          setQuantityInTanks((prev) => {
+            const newQuantityInTanks = [...prev];
+            newQuantityInTanks[index] = 0;
+            return newQuantityInTanks;
+          });
+        }}
+      >
+        Empty Tank
+      </button>
+      <div style={{position: 'relative', marginTop: '40px'}}>
+      <button
+        className="box"
         onMouseDown={() => {
           setButtonName("Filling Water");
           const timer = setInterval(() => {
@@ -46,24 +64,10 @@ export const Tank = ({
           clearInterval(timer);
         }}
       >
-        {buttonName}
+        <span>{buttonName}</span>
+        <i></i>
       </button>
-      <button
-        onClick={() => {
-          setQuantityInMagicTanks((prev) => {
-            const newQuantityInTanks = [...prev];
-            newQuantityInTanks[index] = 0;
-            return newQuantityInTanks;
-          });
-          setQuantityInTanks((prev) => {
-            const newQuantityInTanks = [...prev];
-            newQuantityInTanks[index] = 0;
-            return newQuantityInTanks;
-          });
-        }}
-      >
-        Empty Tank
-      </button>
+      </div>
     </div>
   );
 };

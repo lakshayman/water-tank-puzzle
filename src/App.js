@@ -12,8 +12,8 @@ function App() {
   );
 
   useEffect(() => {
-    setQuantityInTanks(Array(noOfTanks).fill(0));
-    setQuantityInMagicTanks(Array(noOfTanks).fill(0));
+    setQuantityInTanks(prev => [...prev, 0]);
+    setQuantityInMagicTanks(prev => [...prev, 0]);
   }, [noOfTanks]);
 
   useEffect(() => {
@@ -105,9 +105,6 @@ function App() {
           );
         })}
       </div>
-      <h1 className="App-heading">
-        {noOfTanks} {quantityInTanks}
-      </h1>
     </div>
   );
 }
